@@ -57,3 +57,29 @@ INSERT INTO pedidos (produto_id,cliente_id,data_pedido) VALUES (1,1,'2017-01-01 
 
 alter table clientes
 drop column email;
+
+use cafeteria;
+select * from clientes
+where ultimo_nome = 'Bluth'
+and genero = 'F';
+
+select * from produtos
+where origem_cafe = 'Carapicuiba'
+or preco > 4.99;
+
+select * from pedidos
+where produto_id between 5 and 10;
+
+select * from produtos
+order by id desc;
+
+select *from clientes
+where ultimo_nome not in ('null')
+order by ultimo_nome asc;
+
+select distinct origem_cafe from produtos;
+
+select *from clientes
+where primeiro_nome not in ('null')
+order by primeiro_nome asc
+limit 6;
