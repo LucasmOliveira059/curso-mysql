@@ -3,6 +3,16 @@ show databases;
 create database cinema;
 use cinema;
 
+/*drop table reserva_assentos;
+drop table catalogos;
+drop table assentos;
+drop table exibicoes;
+drop table salas;
+drop table clientes;
+drop table filmes; */
+
+show tables;
+
 create table filmes (
 	id int primary key auto_increment,
     filme VARCHAR (40) not null unique,
@@ -17,7 +27,7 @@ create table clientes (
 create table salas(
 	id int primary key auto_increment,
     nome VARCHAR(40) not null,
-    assentos int not null
+    assento int not null
 );
 create table exibicoes(
 	id int primary key auto_increment,
@@ -30,7 +40,7 @@ create table exibicoes(
 create table assentos(
 	id int primary key auto_increment,
     fila CHAR(1) not null,
-    num int not null,
+    cadeira int not null,
     sala_id int not null,
     foreign key (sala_id) references salas(id)
 );
@@ -41,12 +51,14 @@ create table catalogos(
     foreign key (exib_id) references exibicoes(id),
     foreign key (cliente_id) references clientes(id)
 );
-create table reserva_assento(
+create table reserva_assentos(
 	id int primary key auto_increment,
     catalogo_id int not null,
     assento_id int not null,
     foreign key (catalogo_id) references catalogos(id),
     foreign key (assento_id) references assentos(id)
 );
+
 show tables;
-describe exibicoes;
+describe reserva_assentos;
+select *from reserva_assentos;
